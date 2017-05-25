@@ -12,6 +12,9 @@
 		B738161A1ED715150084DCFB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B73816181ED715150084DCFB /* Main.storyboard */; };
 		B738161C1ED715150084DCFB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B738161B1ED715150084DCFB /* Assets.xcassets */; };
 		B738161F1ED715150084DCFB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B738161D1ED715150084DCFB /* LaunchScreen.storyboard */; };
+		B73816271ED725B70084DCFB /* MovieClip.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73816261ED725B70084DCFB /* MovieClip.swift */; };
+		B75380CE1ED72F5F00C089CB /* MovieClipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75380CD1ED72F5F00C089CB /* MovieClipView.swift */; };
+		B7D0938A1ED72CC900B1CCD2 /* TileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D093891ED72CC900B1CCD2 /* TileView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +25,9 @@
 		B738161B1ED715150084DCFB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B738161E1ED715150084DCFB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B73816201ED715150084DCFB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B73816261ED725B70084DCFB /* MovieClip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieClip.swift; sourceTree = "<group>"; };
+		B75380CD1ED72F5F00C089CB /* MovieClipView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieClipView.swift; sourceTree = "<group>"; };
+		B7D093891ED72CC900B1CCD2 /* TileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +66,9 @@
 				B738161B1ED715150084DCFB /* Assets.xcassets */,
 				B738161D1ED715150084DCFB /* LaunchScreen.storyboard */,
 				B73816201ED715150084DCFB /* Info.plist */,
+				B73816261ED725B70084DCFB /* MovieClip.swift */,
+				B7D093891ED72CC900B1CCD2 /* TileView.swift */,
+				B75380CD1ED72F5F00C089CB /* MovieClipView.swift */,
 			);
 			path = "TimelinePlayground-Swift";
 			sourceTree = "<group>";
@@ -137,6 +146,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				B73816171ED715150084DCFB /* ViewController.swift in Sources */,
+				B73816271ED725B70084DCFB /* MovieClip.swift in Sources */,
+				B75380CE1ED72F5F00C089CB /* MovieClipView.swift in Sources */,
+				B7D0938A1ED72CC900B1CCD2 /* TileView.swift in Sources */,
 				B73816151ED715150084DCFB /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -301,6 +313,7 @@
 				B73816251ED715150084DCFB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
