@@ -19,9 +19,11 @@
 		B73816271ED725B70084DCFB /* MovieClip.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73816261ED725B70084DCFB /* MovieClip.swift */; };
 		B75380CE1ED72F5F00C089CB /* MovieClipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75380CD1ED72F5F00C089CB /* MovieClipView.swift */; };
 		B7D0938A1ED72CC900B1CCD2 /* TileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D093891ED72CC900B1CCD2 /* TileView.swift */; };
+		D04D71FC9D8732C678E068D7 /* Pods_TimelinePlayground_Swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA32A835F57EBBEAAF0BE44F /* Pods_TimelinePlayground_Swift.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		578A753AD89F69EFE030D0B9 /* Pods-TimelinePlayground-Swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimelinePlayground-Swift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TimelinePlayground-Swift/Pods-TimelinePlayground-Swift.debug.xcconfig"; sourceTree = "<group>"; };
 		B72B56D21ED7CE9B00DB600D /* TransitionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionView.swift; sourceTree = "<group>"; };
 		B72B56D41ED7CF7B00DB600D /* MovieTrackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieTrackView.swift; sourceTree = "<group>"; };
 		B72B56D61ED7CF9300DB600D /* MovieTrackViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieTrackViewModel.swift; sourceTree = "<group>"; };
@@ -36,6 +38,8 @@
 		B73816261ED725B70084DCFB /* MovieClip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieClip.swift; sourceTree = "<group>"; };
 		B75380CD1ED72F5F00C089CB /* MovieClipView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieClipView.swift; sourceTree = "<group>"; };
 		B7D093891ED72CC900B1CCD2 /* TileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileView.swift; sourceTree = "<group>"; };
+		EA968547BAFC78D8B8EE8F5E /* Pods-TimelinePlayground-Swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimelinePlayground-Swift.release.xcconfig"; path = "Pods/Target Support Files/Pods-TimelinePlayground-Swift/Pods-TimelinePlayground-Swift.release.xcconfig"; sourceTree = "<group>"; };
+		FA32A835F57EBBEAAF0BE44F /* Pods_TimelinePlayground_Swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TimelinePlayground_Swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,17 +47,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D04D71FC9D8732C678E068D7 /* Pods_TimelinePlayground_Swift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2E8752BC446F16F85336195A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FA32A835F57EBBEAAF0BE44F /* Pods_TimelinePlayground_Swift.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		B73816081ED715150084DCFB = {
 			isa = PBXGroup;
 			children = (
 				B73816131ED715150084DCFB /* TimelinePlayground-Swift */,
 				B73816121ED715150084DCFB /* Products */,
+				E423BF0DC1D28B74E85C21A3 /* Pods */,
+				2E8752BC446F16F85336195A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -85,6 +100,15 @@
 			path = "TimelinePlayground-Swift";
 			sourceTree = "<group>";
 		};
+		E423BF0DC1D28B74E85C21A3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				578A753AD89F69EFE030D0B9 /* Pods-TimelinePlayground-Swift.debug.xcconfig */,
+				EA968547BAFC78D8B8EE8F5E /* Pods-TimelinePlayground-Swift.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -92,9 +116,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B73816231ED715150084DCFB /* Build configuration list for PBXNativeTarget "TimelinePlayground-Swift" */;
 			buildPhases = (
+				6108C04E71FF63670132C14D /* [CP] Check Pods Manifest.lock */,
 				B738160D1ED715150084DCFB /* Sources */,
 				B738160E1ED715150084DCFB /* Frameworks */,
 				B738160F1ED715150084DCFB /* Resources */,
+				53F154612CB8EBA821CA4900 /* [CP] Embed Pods Frameworks */,
+				B195D3C910B9AB3D0D396F75 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -152,6 +179,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		53F154612CB8EBA821CA4900 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TimelinePlayground-Swift/Pods-TimelinePlayground-Swift-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6108C04E71FF63670132C14D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B195D3C910B9AB3D0D396F75 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TimelinePlayground-Swift/Pods-TimelinePlayground-Swift-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B738160D1ED715150084DCFB /* Sources */ = {
@@ -289,6 +364,7 @@
 		};
 		B73816241ED715150084DCFB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 578A753AD89F69EFE030D0B9 /* Pods-TimelinePlayground-Swift.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = Z35T9799TW;
@@ -302,6 +378,7 @@
 		};
 		B73816251ED715150084DCFB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EA968547BAFC78D8B8EE8F5E /* Pods-TimelinePlayground-Swift.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = Z35T9799TW;
