@@ -15,7 +15,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let viewModel = MovieTrackViewModel(clipCount: 2)
+        let viewModel = MovieTrackViewModel(clipCount: 5)
         let trackView = MovieTrackView(viewModel: viewModel)
         
         scrollView.addSubview(trackView)
