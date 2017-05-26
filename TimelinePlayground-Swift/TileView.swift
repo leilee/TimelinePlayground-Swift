@@ -19,7 +19,7 @@ class TileView: UIView {
     private var imageView: UIImageView
 
     override init(frame: CGRect) {
-        imageView = UIImageView(frame: frame)
+        imageView = UIImageView(frame: CGRect(origin: .zero, size: frame.size))
         super.init(frame: frame)
         addSubview(imageView)
     }

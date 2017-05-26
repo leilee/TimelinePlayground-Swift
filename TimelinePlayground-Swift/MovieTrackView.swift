@@ -32,7 +32,7 @@ class MovieTrackView: UIView {
         }
     }
     
-    let mode = DisplayMode.minimum
+    let mode = DisplayMode.maximum
     
     let viewModel: MovieTrackViewModel
     var clipViews = [MovieClipView]()

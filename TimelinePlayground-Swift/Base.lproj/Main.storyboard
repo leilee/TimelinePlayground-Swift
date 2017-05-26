@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -23,15 +22,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qju-ge-Iz9">
-                                <rect key="frame" x="16" y="20" width="343" height="647"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Qju-ge-Iz9" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="FdZ-Ge-nTl"/>
+                            <constraint firstItem="Qju-ge-Iz9" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="1G9-si-PqM"/>
+                            <constraint firstAttribute="trailing" secondItem="Qju-ge-Iz9" secondAttribute="trailing" id="6so-JP-Q6W"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Qju-ge-Iz9" secondAttribute="bottom" id="bv7-yv-wSJ"/>
                             <constraint firstItem="Qju-ge-Iz9" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="nLi-aF-YLM"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Qju-ge-Iz9" secondAttribute="trailing" id="xpV-56-PUI"/>
                         </constraints>
                     </view>
                     <connections>
