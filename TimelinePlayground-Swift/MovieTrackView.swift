@@ -8,35 +8,36 @@
 
 import UIKit
 
-class MovieTrackView: UIView {
+enum DisplayMode {
+    case minimum, maximum
     
-    enum DisplayMode {
-        case minimum, maximum
-        
-        func trackWidth(viewModel: MovieTrackViewModel) -> Int {
-            switch self {
-            case .minimum:
-                return viewModel.minContentWidth()
-            case .maximum:
-                return viewModel.maxContentWidth()
-            }
-        }
-        
-        func clipWidth(clip: MovieClip) -> Int {
-            switch self {
-            case .minimum:
-                return Layout.minMovieClipWidth
-            case .maximum:
-                return  clip.frameNumber * Int(Layout.tileSize.width)
-            }
+    func trackWidth(viewModel: MovieTrackViewModel) -> Int {
+        switch self {
+        case .minimum:
+            return viewModel.minContentWidth()
+        case .maximum:
+            return viewModel.maxContentWidth()
         }
     }
     
-    let mode = DisplayMode.maximum
+    func clipWidth(clip: MovieClip) -> Int {
+        switch self {
+        case .minimum:
+            return Layout.minMovieClipWidth
+        case .maximum:
+            return  clip.frameNumber * Int(Layout.tileSize.width)
+        }
+    }
+}
+
+class MovieTrackView: UIView {
+    
+    let mode = DisplayMode.minimum
     
     let viewModel: MovieTrackViewModel
     var clipViews = [MovieClipView]()
     var transitionViews = [TransitionView]()
+    var referenceClipFrames = [CGRect]()
     
     // TODO: frame 应该由哪个模块负责计算
     
@@ -77,7 +78,76 @@ class MovieTrackView: UIView {
 
 extension MovieTrackView {
     
-    func applyScale(_ scale: CGFloat) {
+    func beginScale() {
+        referenceClipFrames = clipViews.map { $0.frame }
+    }
+    
+    func endScale() {
+        referenceClipFrames.removeAll()
+    }
+    
+    typealias ScaleCompletion = (CGSize) -> Void
+    
+    func applyScale(_ scale: CGFloat, completion: ScaleCompletion? = nil) {
+        if scale > 1 && reachedMaxScale {
+            return
+        }
         
+        if scale < 1 && reachedMinScale {
+            return
+        }
+        
+        guard clipViews.count == referenceClipFrames.count else {
+            assertionFailure("clip view count & frame count mismatch")
+            return
+        }
+        
+        let minScaledWidth = CGFloat(Layout.minMovieClipWidth)
+        var offsetX = CGFloat(Layout.movieTrackHorizontalPadding)
+        var contentWidth = CGFloat(2 * Layout.movieTrackHorizontalPadding)
+        
+        // reset clipViews & transitionViews frame
+        for i in 0..<clipViews.count {
+            let clipView = clipViews[i]
+            let referenceFrame = referenceClipFrames[i]
+            let maxScaledWidth = CGFloat(viewModel.movieClips[i].frameNumber) * Layout.tileSize.width
+            let clipFrame = CGRect(
+                origin: CGPoint(x: offsetX, y: 0),
+                size: scaleSize(size: referenceFrame.size, scale: scale, upperLimitWidth: maxScaledWidth, lowerLimitWidth: minScaledWidth))
+            clipView.frame = clipFrame
+            
+            offsetX += clipFrame.width
+            contentWidth += clipFrame.width
+            
+            if i != clipViews.count - 1 {
+                let transitionView = transitionViews[i]
+                let transitionFrame = CGRect(origin: CGPoint(x: offsetX, y: 0), size: transitionView.frame.size)
+                transitionView.frame = transitionFrame
+                
+                offsetX += transitionFrame.width
+                contentWidth += transitionFrame.width
+            }
+        }
+        
+        // reset trackView frame
+        frame = CGRect(origin: frame.origin, size: CGSize(width: contentWidth, height: frame.height))
+        
+        completion?(frame.size)
+    }
+    
+    func scaleSize(size: CGSize, scale: CGFloat, upperLimitWidth: CGFloat, lowerLimitWidth: CGFloat) -> CGSize {
+        var scaledWidth = size.width * scale
+        scaledWidth = max(scaledWidth, lowerLimitWidth)
+        scaledWidth = min(scaledWidth, upperLimitWidth)
+        
+        return CGSize(width: scaledWidth, height: size.height)
+    }
+    
+    var reachedMaxScale: Bool {
+        return Int(frame.width) >= viewModel.maxContentWidth()
+    }
+    
+    var reachedMinScale: Bool {
+        return Int(frame.width) <= viewModel.minContentWidth()
     }
 }

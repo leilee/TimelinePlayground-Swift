@@ -10,6 +10,16 @@ import UIKit
 
 class MovieClipView: UIView {
     
+    override var frame: CGRect {
+        didSet {
+            print("didSetFrame: \(oldValue) -> \(frame)")
+            
+            if shouldReloadTile(oldFrame: oldValue, frame: frame) {
+                reloadTile()
+            }
+        }
+    }
+    
     let clip: MovieClip
 
     init(frame: CGRect, clip: MovieClip) {
@@ -19,9 +29,20 @@ class MovieClipView: UIView {
         
         clipsToBounds = true
         
+        reloadTile()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
+extension MovieClipView {
+    
+    func reloadTile() {
         let tileHeight = frame.height
         let tileWidth = tileHeight * CGFloat(Layout.tileRatio)
-        let tileCount = Int(ceil(frame.width / tileWidth))
+        let tileCount = self.tileCount(frame: frame)
         var offsetX: CGFloat = 0.0
         var tileViews = [TileView]()
         
@@ -41,10 +62,15 @@ class MovieClipView: UIView {
                 tileViews[i].image = clip.thumbnail(for: percentage)
             }
         }
-        
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    func shouldReloadTile(oldFrame: CGRect, frame: CGRect) -> Bool {
+        return tileCount(frame: oldFrame) != tileCount(frame: frame)
+    }
+    
+    func tileCount(frame: CGRect) -> Int {
+        let tileHeight = frame.height
+        let tileWidth = tileHeight * CGFloat(Layout.tileRatio)
+        return Int(ceil(frame.width / tileWidth))
     }
 }
