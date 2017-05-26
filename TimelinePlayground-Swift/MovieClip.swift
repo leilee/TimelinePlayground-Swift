@@ -14,11 +14,11 @@ struct MovieClip {
     let frameNumber: Int
     
     var firstThumbnail: UIImage {
-        return UIImage(named: "1")!
+        return #imageLiteral(resourceName: "1")
     }
     
     var lastThumbnail: UIImage {
-        return UIImage(named: "10")!
+        return #imageLiteral(resourceName: "10")
     }
     
     init() {

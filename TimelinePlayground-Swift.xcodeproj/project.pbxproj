@@ -83,19 +83,19 @@
 		B73816131ED715150084DCFB /* TimelinePlayground-Swift */ = {
 			isa = PBXGroup;
 			children = (
-				B73816141ED715150084DCFB /* AppDelegate.swift */,
-				B73816161ED715150084DCFB /* ViewController.swift */,
-				B73816181ED715150084DCFB /* Main.storyboard */,
-				B738161B1ED715150084DCFB /* Assets.xcassets */,
-				B738161D1ED715150084DCFB /* LaunchScreen.storyboard */,
 				B73816201ED715150084DCFB /* Info.plist */,
+				B73816141ED715150084DCFB /* AppDelegate.swift */,
 				B72B56D81ED7D0E600DB600D /* Defines.swift */,
 				B73816261ED725B70084DCFB /* MovieClip.swift */,
+				B75380CD1ED72F5F00C089CB /* MovieClipView.swift */,
+				B72B56D41ED7CF7B00DB600D /* MovieTrackView.swift */,
 				B72B56D61ED7CF9300DB600D /* MovieTrackViewModel.swift */,
 				B7D093891ED72CC900B1CCD2 /* TileView.swift */,
 				B72B56D21ED7CE9B00DB600D /* TransitionView.swift */,
-				B75380CD1ED72F5F00C089CB /* MovieClipView.swift */,
-				B72B56D41ED7CF7B00DB600D /* MovieTrackView.swift */,
+				B73816161ED715150084DCFB /* ViewController.swift */,
+				B738161B1ED715150084DCFB /* Assets.xcassets */,
+				B738161D1ED715150084DCFB /* LaunchScreen.storyboard */,
+				B73816181ED715150084DCFB /* Main.storyboard */,
 			);
 			path = "TimelinePlayground-Swift";
 			sourceTree = "<group>";
