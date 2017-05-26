@@ -10,14 +10,20 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var scrollView: UIScrollView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        let viewModel = MovieTrackViewModel(clipCount: 2)
+        let trackView = MovieTrackView(viewModel: viewModel)
+        
+        scrollView.addSubview(trackView)
+        scrollView.contentSize = trackView.frame.size
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
 }

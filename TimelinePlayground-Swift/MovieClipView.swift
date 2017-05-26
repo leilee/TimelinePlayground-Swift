@@ -17,6 +17,8 @@ class MovieClipView: UIView {
         
         super.init(frame: frame)
         
+        clipsToBounds = true
+        
         let tileHeight = frame.height
         let tileWidth = tileHeight * Layout.tileRatio
         let tileCount = Int(ceil(frame.width / tileWidth))

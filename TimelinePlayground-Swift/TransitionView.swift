@@ -17,7 +17,7 @@ class TransitionView: UIView {
         
         super.init(frame: frame)
         
-        transitionButton.frame = frame
+        transitionButton.frame = CGRect(origin: .zero, size: frame.size)
         transitionButton.setImage(#imageLiteral(resourceName: "transition_icon"), for: .normal)
         self.addSubview(transitionButton)
     }
