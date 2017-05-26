@@ -10,10 +10,6 @@ import UIKit
 
 class MovieClipView: UIView {
     
-    enum Layout {
-        static let ratio = CGFloat(16.0 / 9.0)
-    }
-    
     let clip: MovieClip
 
     init(frame: CGRect, clip: MovieClip) {
@@ -22,18 +18,28 @@ class MovieClipView: UIView {
         super.init(frame: frame)
         
         let tileHeight = frame.height
-        let tileWidth = tileHeight * Layout.ratio
+        let tileWidth = tileHeight * Layout.tileRatio
         let tileCount = Int(ceil(frame.width / tileWidth))
         var offsetX: CGFloat = 0.0
+        var tileViews = [TileView]()
         
-        for i in 0..<tileCount {
+        for _ in 0..<tileCount {
             let rect = CGRect(x: offsetX, y: 0.0, width: tileWidth, height: tileHeight)
             let tileView = TileView(frame: rect)
-            let percentage = Double(i) / Double(tileCount)
-            tileView.image = clip.thumbnail(for: percentage)
             addSubview(tileView)
+            tileViews.append(tileView)
             offsetX += tileWidth
         }
+        
+        tileViews.first?.image = clip.firstThumbnail
+        if tileViews.count > 1 {
+            tileViews.last?.image = clip.lastThumbnail
+            for i in 1..<tileViews.count - 1 {
+                let percentage = Double(i) / Double(tileViews.count)
+                tileViews[i].image = clip.thumbnail(for: percentage)
+            }
+        }
+        
     }
     
     required init?(coder aDecoder: NSCoder) {

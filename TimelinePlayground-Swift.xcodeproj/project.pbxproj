@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B72B56D31ED7CE9B00DB600D /* TransitionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72B56D21ED7CE9B00DB600D /* TransitionView.swift */; };
+		B72B56D51ED7CF7B00DB600D /* MovieTrackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72B56D41ED7CF7B00DB600D /* MovieTrackView.swift */; };
+		B72B56D71ED7CF9400DB600D /* MovieTrackViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72B56D61ED7CF9300DB600D /* MovieTrackViewModel.swift */; };
+		B72B56D91ED7D0E600DB600D /* Defines.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72B56D81ED7D0E600DB600D /* Defines.swift */; };
 		B73816151ED715150084DCFB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73816141ED715150084DCFB /* AppDelegate.swift */; };
 		B73816171ED715150084DCFB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73816161ED715150084DCFB /* ViewController.swift */; };
 		B738161A1ED715150084DCFB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B73816181ED715150084DCFB /* Main.storyboard */; };
@@ -18,6 +22,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B72B56D21ED7CE9B00DB600D /* TransitionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionView.swift; sourceTree = "<group>"; };
+		B72B56D41ED7CF7B00DB600D /* MovieTrackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieTrackView.swift; sourceTree = "<group>"; };
+		B72B56D61ED7CF9300DB600D /* MovieTrackViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieTrackViewModel.swift; sourceTree = "<group>"; };
+		B72B56D81ED7D0E600DB600D /* Defines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Defines.swift; sourceTree = "<group>"; };
 		B73816111ED715150084DCFB /* TimelinePlayground-Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TimelinePlayground-Swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B73816141ED715150084DCFB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B73816161ED715150084DCFB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -66,9 +74,13 @@
 				B738161B1ED715150084DCFB /* Assets.xcassets */,
 				B738161D1ED715150084DCFB /* LaunchScreen.storyboard */,
 				B73816201ED715150084DCFB /* Info.plist */,
+				B72B56D81ED7D0E600DB600D /* Defines.swift */,
 				B73816261ED725B70084DCFB /* MovieClip.swift */,
+				B72B56D61ED7CF9300DB600D /* MovieTrackViewModel.swift */,
 				B7D093891ED72CC900B1CCD2 /* TileView.swift */,
+				B72B56D21ED7CE9B00DB600D /* TransitionView.swift */,
 				B75380CD1ED72F5F00C089CB /* MovieClipView.swift */,
+				B72B56D41ED7CF7B00DB600D /* MovieTrackView.swift */,
 			);
 			path = "TimelinePlayground-Swift";
 			sourceTree = "<group>";
@@ -149,7 +161,11 @@
 				B73816271ED725B70084DCFB /* MovieClip.swift in Sources */,
 				B75380CE1ED72F5F00C089CB /* MovieClipView.swift in Sources */,
 				B7D0938A1ED72CC900B1CCD2 /* TileView.swift in Sources */,
+				B72B56D51ED7CF7B00DB600D /* MovieTrackView.swift in Sources */,
+				B72B56D91ED7D0E600DB600D /* Defines.swift in Sources */,
+				B72B56D71ED7CF9400DB600D /* MovieTrackViewModel.swift in Sources */,
 				B73816151ED715150084DCFB /* AppDelegate.swift in Sources */,
+				B72B56D31ED7CE9B00DB600D /* TransitionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

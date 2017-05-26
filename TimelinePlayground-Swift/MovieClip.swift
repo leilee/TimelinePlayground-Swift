@@ -13,6 +13,14 @@ struct MovieClip {
     let duration: TimeInterval
     let frameNumber: Int
     
+    var firstThumbnail: UIImage {
+        return UIImage(named: "1")!
+    }
+    
+    var lastThumbnail: UIImage {
+        return UIImage(named: "10")!
+    }
+    
     init() {
         frameNumber = 10
         duration = Double(arc4random()) / Double(RAND_MAX) * 4 + 1
