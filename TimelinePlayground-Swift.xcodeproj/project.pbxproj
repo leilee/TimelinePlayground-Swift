@@ -17,6 +17,7 @@
 		B738161C1ED715150084DCFB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B738161B1ED715150084DCFB /* Assets.xcassets */; };
 		B738161F1ED715150084DCFB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B738161D1ED715150084DCFB /* LaunchScreen.storyboard */; };
 		B73816271ED725B70084DCFB /* MovieClip.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73816261ED725B70084DCFB /* MovieClip.swift */; };
+		B74229E81ED84C2900B2735C /* TimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74229E71ED84C2900B2735C /* TimelineView.swift */; };
 		B75380CE1ED72F5F00C089CB /* MovieClipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75380CD1ED72F5F00C089CB /* MovieClipView.swift */; };
 		B7D0938A1ED72CC900B1CCD2 /* TileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D093891ED72CC900B1CCD2 /* TileView.swift */; };
 		D04D71FC9D8732C678E068D7 /* Pods_TimelinePlayground_Swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA32A835F57EBBEAAF0BE44F /* Pods_TimelinePlayground_Swift.framework */; };
@@ -36,6 +37,7 @@
 		B738161E1ED715150084DCFB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B73816201ED715150084DCFB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B73816261ED725B70084DCFB /* MovieClip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieClip.swift; sourceTree = "<group>"; };
+		B74229E71ED84C2900B2735C /* TimelineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineView.swift; sourceTree = "<group>"; };
 		B75380CD1ED72F5F00C089CB /* MovieClipView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieClipView.swift; sourceTree = "<group>"; };
 		B7D093891ED72CC900B1CCD2 /* TileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileView.swift; sourceTree = "<group>"; };
 		EA968547BAFC78D8B8EE8F5E /* Pods-TimelinePlayground-Swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimelinePlayground-Swift.release.xcconfig"; path = "Pods/Target Support Files/Pods-TimelinePlayground-Swift/Pods-TimelinePlayground-Swift.release.xcconfig"; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 				B72B56D41ED7CF7B00DB600D /* MovieTrackView.swift */,
 				B72B56D61ED7CF9300DB600D /* MovieTrackViewModel.swift */,
 				B7D093891ED72CC900B1CCD2 /* TileView.swift */,
+				B74229E71ED84C2900B2735C /* TimelineView.swift */,
 				B72B56D21ED7CE9B00DB600D /* TransitionView.swift */,
 				B73816161ED715150084DCFB /* ViewController.swift */,
 				B738161B1ED715150084DCFB /* Assets.xcassets */,
@@ -236,6 +239,7 @@
 				B73816171ED715150084DCFB /* ViewController.swift in Sources */,
 				B73816271ED725B70084DCFB /* MovieClip.swift in Sources */,
 				B75380CE1ED72F5F00C089CB /* MovieClipView.swift in Sources */,
+				B74229E81ED84C2900B2735C /* TimelineView.swift in Sources */,
 				B7D0938A1ED72CC900B1CCD2 /* TileView.swift in Sources */,
 				B72B56D51ED7CF7B00DB600D /* MovieTrackView.swift in Sources */,
 				B72B56D91ED7D0E600DB600D /* Defines.swift in Sources */,
