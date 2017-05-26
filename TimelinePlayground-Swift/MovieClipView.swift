@@ -21,6 +21,7 @@ class MovieClipView: UIView {
     }
     
     let clip: MovieClip
+    var tileViews = [TileView]()
 
     init(frame: CGRect, clip: MovieClip) {
         self.clip = clip
@@ -43,17 +44,29 @@ extension MovieClipView {
         let tileHeight = frame.height
         let tileWidth = tileHeight * CGFloat(Layout.tileRatio)
         let tileCount = self.tileCount(frame: frame)
-        var offsetX: CGFloat = 0.0
-        var tileViews = [TileView]()
+        let currentTileCount = tileViews.count
         
-        for _ in 0..<tileCount {
-            let rect = CGRect(x: offsetX, y: 0.0, width: tileWidth, height: tileHeight)
-            let tileView = TileView(frame: rect)
-            addSubview(tileView)
-            tileViews.append(tileView)
+        if (tileCount > currentTileCount) {
+            for _ in 0..<tileCount - currentTileCount {
+                let rect = CGRect(origin: .zero, size: CGSize(width: tileWidth, height: tileHeight))
+                let tileView = TileView(frame: rect)
+                addSubview(tileView)
+                tileViews.append(tileView)
+            }
+        } else {
+            for _ in 0..<currentTileCount - tileCount {
+                tileViews.removeLast().removeFromSuperview()
+            }
+        }
+        
+        // set frame
+        var offsetX: CGFloat = 0.0
+        for tileView in tileViews {
+            tileView.frame = CGRect(x: offsetX, y: 0.0, width: tileWidth, height: tileHeight)
             offsetX += tileWidth
         }
         
+        // set image
         tileViews.first?.image = clip.firstThumbnail
         if tileViews.count > 1 {
             tileViews.last?.image = clip.lastThumbnail
