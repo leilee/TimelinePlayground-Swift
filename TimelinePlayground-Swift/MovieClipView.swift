@@ -17,24 +17,61 @@ class MovieClipView: UIView {
             if shouldReloadTile(oldFrame: oldValue, frame: frame) {
                 reloadTile()
             }
+            
+            if selected {
+                reloadSelectionBorder()
+            }
+        }
+    }
+    
+    var selected = false {
+        didSet {
+            selected ? applySelectionStyle() : applyUnselectionStyle()
         }
     }
     
     let clip: MovieClip
+    let borderImageView: UIImageView
     var tileViews = [TileView]()
 
     init(frame: CGRect, clip: MovieClip) {
         self.clip = clip
+        borderImageView = UIImageView(image: #imageLiteral(resourceName: "clip_selection"))
         
         super.init(frame: frame)
         
         clipsToBounds = true
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(tapAction(sender:)))
+        addGestureRecognizer(tap)
         
         reloadTile()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+}
+
+extension MovieClipView {
+    
+    func tapAction(sender: UITapGestureRecognizer) {
+        print("\(#function), state: \(sender.state.description)")
+        selected = !selected
+    }
+    
+    func applySelectionStyle() {
+        borderImageView.frame = CGRect(origin: .zero, size: frame.size)
+        addSubview(borderImageView)
+    }
+    
+    func applyUnselectionStyle() {
+        borderImageView.removeFromSuperview()
+    }
+    
+    func reloadSelectionBorder() {
+        bringSubview(toFront: borderImageView)
+        borderImageView.frame = CGRect(origin: .zero, size: frame.size)
     }
 }
 

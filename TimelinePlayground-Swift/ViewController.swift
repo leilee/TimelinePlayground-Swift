@@ -8,19 +8,6 @@
 
 import UIKit
 
-extension UIGestureRecognizerState {
-    var description: String {
-        switch self {
-        case .began: return "began"
-        case .cancelled: return "cancelled"
-        case .possible: return "possible"
-        case .changed: return "changed"
-        case .ended: return "ended"
-        case .failed: return "failed"
-        }
-    }
-}
-
 class ViewController: UIViewController {
 
     @IBOutlet weak var scrollView: UIScrollView!
