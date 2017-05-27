@@ -20,6 +20,17 @@ struct Layout {
     static let transitionSize = CGSize(width: 60, height: 90)
 }
 
+enum Direction {
+    case left, right
+    
+    func isIncrease(offset: CGFloat) -> Bool {
+        switch self {
+        case .left: return offset < 0
+        case .right: return offset > 0
+        }
+    }
+}
+
 extension UIGestureRecognizerState {
     var description: String {
         switch self {
@@ -31,4 +42,22 @@ extension UIGestureRecognizerState {
         case .failed: return "failed"
         }
     }
+}
+
+private let panningWidth: CGFloat = 20
+
+extension CGPoint {
+    
+    func insideLeftPanningArea(of rect: CGRect) -> Bool {
+        return x < panningWidth
+    }
+    
+    func insideRightPanningArea(of rect: CGRect) -> Bool {
+        return x > rect.width - panningWidth
+    }
+    
+    func insidePanningArea(of rect: CGRect) -> Bool {
+        return insideLeftPanningArea(of: rect) || insideRightPanningArea(of: rect)
+    }
+    
 }

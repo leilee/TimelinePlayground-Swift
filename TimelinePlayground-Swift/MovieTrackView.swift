@@ -39,6 +39,8 @@ class MovieTrackView: UIView {
     var transitionViews = [TransitionView]()
     var referenceClipFrames = [CGRect]()
     var dragFrame = CGRect.zero
+    var panEdge = Direction.left
+    var referencePanFrame = CGRect.zero
     
     // TODO: frame 应该由哪个模块负责计算
     
@@ -209,4 +211,94 @@ extension MovieTrackView {
         clipViews.forEach { $0.selected = false }
     }
     
+}
+
+// MARK: - Pan
+
+extension MovieTrackView {
+    
+    // TODO: protocol pannable
+    
+    func pannableView(at point: CGPoint) -> UIView? {
+        let viewsAtPoint = clipViews.filter { $0.frame.contains(point) }
+        
+        if viewsAtPoint.count > 1 {
+            assertionFailure("attempt to get 0 or 1 view at point \(point), but get \(viewsAtPoint.count)")
+            return nil
+        }
+        
+        guard let v = viewsAtPoint.first, v.selected else {
+            return nil
+        }
+        
+        let p = convert(point, to: v)
+        
+        if p.insidePanningArea(of: v.frame) {
+            return v
+        }
+        
+        return nil
+    }
+    
+    func beginPan(_ view: UIView, with gesture: UIPanGestureRecognizer) {
+        referencePanFrame = view.frame
+        
+        let touchPoint = gesture.location(in: view)
+        panEdge = touchPoint.insideLeftPanningArea(of: view.frame) ? .left : .right
+    }
+    
+    func endPan() {
+        referencePanFrame = .zero
+    }
+    
+    typealias PanCompletion = (CGSize) -> Void
+    
+    func applyPan(_ view: UIView, with gesture: UIPanGestureRecognizer, completion: PanCompletion? = nil) {
+        guard let v = view as? MovieClipView else {
+            return
+        }
+        
+        let translation = gesture.translation(in: v)
+        print("\(#function), \(translation)")
+        
+        var pannedWidth = panEdge.isIncrease(offset: translation.x) ?
+            referencePanFrame.width + fabs(translation.x) : referencePanFrame.width - fabs(translation.x)
+        pannedWidth = max(pannedWidth, CGFloat(Layout.minMovieClipWidth))
+        pannedWidth = min(pannedWidth, CGFloat(v.clip.frameNumber) * Layout.tileSize.width)
+        
+        print("\(#function), width after pan: \(pannedWidth)")
+        
+        guard pannedWidth != v.frame.width else {
+            return
+        }
+        
+        v.frame = CGRect(origin: v.frame.origin, size: CGSize(width: pannedWidth, height: v.frame.height))
+        
+        var offsetX = CGFloat(Layout.movieTrackHorizontalPadding)
+        var contentWidth = CGFloat(2 * Layout.movieTrackHorizontalPadding)
+        
+        // reset clipViews & transitionViews frame
+        for i in 0..<clipViews.count {
+            let clipView = clipViews[i]
+            let clipFrame = CGRect(origin: CGPoint(x: offsetX, y: 0), size: clipView.frame.size)
+            clipView.frame = clipFrame
+            
+            offsetX += clipFrame.width
+            contentWidth += clipFrame.width
+            
+            if i != clipViews.count - 1 {
+                let transitionView = transitionViews[i]
+                let transitionFrame = CGRect(origin: CGPoint(x: offsetX, y: 0), size: transitionView.frame.size)
+                transitionView.frame = transitionFrame
+                
+                offsetX += transitionFrame.width
+                contentWidth += transitionFrame.width
+            }
+        }
+        
+        // reset trackView frame
+        frame = CGRect(origin: frame.origin, size: CGSize(width: contentWidth, height: frame.height))
+        
+        completion?(frame.size)
+    }
 }

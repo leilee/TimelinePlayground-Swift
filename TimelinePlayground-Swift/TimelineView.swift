@@ -10,8 +10,10 @@ import UIKit
 
 class TimelineView: UIScrollView {
     
+    var pan: UIPanGestureRecognizer!
     var trackView: MovieTrackView!
     var draggingView: UIView?
+    var panningView: UIView?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -42,10 +44,22 @@ class TimelineView: UIScrollView {
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapAction(sender:)))
         addGestureRecognizer(tap)
         
-//        let pan = UIPanGestureRecognizer(target: self, action: #selector(panAction(sender:)))
-//        addGestureRecognizer(pan)
+        pan = UIPanGestureRecognizer(target: self, action: #selector(panAction(sender:)))
+        pan.delegate = self
+        addGestureRecognizer(pan)
     }
 
+}
+
+extension TimelineView: UIGestureRecognizerDelegate {
+    
+    override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        if gestureRecognizer == pan {
+            return trackView.pannableView(at: gestureRecognizer.location(in: trackView)) != nil
+        }
+        return true
+    }
+    
 }
 
 // MARK: - Gesture Action
@@ -74,8 +88,7 @@ extension TimelineView {
         switch sender.state {
         case .began:
             if shouldBeginDrag(with: sender) {
-                draggingView = trackView.draggableView(at: trackPoint)
-                beginDrag(at: point)
+                beginDrag(trackView.draggableView(at: trackPoint)!, at: point)
             }
         case .ended, .cancelled, .failed: endDrag(at: point)
         case .changed: drag(to: point, animated: false)
@@ -84,7 +97,12 @@ extension TimelineView {
     }
     
     func panAction(sender: UIPanGestureRecognizer) {
-        print("\(#function), \(sender)")
+        switch sender.state {
+        case .began: beginPan(trackView.pannableView(at: sender.location(in: trackView))!, with: sender)
+        case .ended, .cancelled, .failed: endPan()
+        case .changed: pan(with: sender)
+        default: break
+        }
     }
     
     func tapAction(sender: UITapGestureRecognizer) {
@@ -108,15 +126,13 @@ extension TimelineView {
         return trackView.draggableView(at: point) != nil
     }
     
-    func beginDrag(at point: CGPoint) {
-        guard let v = draggingView else {
-            return
-        }
+    func beginDrag(_ view: UIView, at point: CGPoint) {
+        draggingView = view
         
-        let frame = trackView.convert(v.frame, to: self)
-        trackView.removeDraggableView(v)
-        addSubview(v)
-        v.frame = frame
+        let frame = trackView.convert(view.frame, to: self)
+        trackView.removeDraggableView(view)
+        addSubview(view)
+        view.frame = frame
         
         drag(to: point, animated: true)
     }
@@ -144,8 +160,23 @@ extension TimelineView {
     }
 }
 
-// MARK: - Tap
+// MARK: - Pan
 
 extension TimelineView {
     
+    func beginPan(_ view: UIView, with gesture: UIPanGestureRecognizer) {
+        panningView = view
+        trackView.beginPan(view, with: gesture)
+    }
+    
+    func endPan() {
+        panningView = nil
+        trackView.endPan()
+    }
+    
+    func pan(with gesture: UIPanGestureRecognizer) {
+        trackView.applyPan(panningView!, with: gesture) { size in
+            self.contentSize = size
+        }
+    }
 }
