@@ -19,6 +19,10 @@
 		B73816271ED725B70084DCFB /* MovieClip.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73816261ED725B70084DCFB /* MovieClip.swift */; };
 		B74229E81ED84C2900B2735C /* TimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74229E71ED84C2900B2735C /* TimelineView.swift */; };
 		B75380CE1ED72F5F00C089CB /* MovieClipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75380CD1ED72F5F00C089CB /* MovieClipView.swift */; };
+		B75C09791ED9912300FEA262 /* Transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75C09781ED9912300FEA262 /* Transition.swift */; };
+		B75C097B1ED9913400FEA262 /* Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75C097A1ED9913400FEA262 /* Audio.swift */; };
+		B75C097D1ED9914300FEA262 /* Subtitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75C097C1ED9914300FEA262 /* Subtitle.swift */; };
+		B75C097F1ED9914B00FEA262 /* Sticker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75C097E1ED9914B00FEA262 /* Sticker.swift */; };
 		B7D0938A1ED72CC900B1CCD2 /* TileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D093891ED72CC900B1CCD2 /* TileView.swift */; };
 		D04D71FC9D8732C678E068D7 /* Pods_TimelinePlayground_Swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA32A835F57EBBEAAF0BE44F /* Pods_TimelinePlayground_Swift.framework */; };
 /* End PBXBuildFile section */
@@ -39,6 +43,10 @@
 		B73816261ED725B70084DCFB /* MovieClip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieClip.swift; sourceTree = "<group>"; };
 		B74229E71ED84C2900B2735C /* TimelineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineView.swift; sourceTree = "<group>"; };
 		B75380CD1ED72F5F00C089CB /* MovieClipView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieClipView.swift; sourceTree = "<group>"; };
+		B75C09781ED9912300FEA262 /* Transition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transition.swift; sourceTree = "<group>"; };
+		B75C097A1ED9913400FEA262 /* Audio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Audio.swift; sourceTree = "<group>"; };
+		B75C097C1ED9914300FEA262 /* Subtitle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Subtitle.swift; sourceTree = "<group>"; };
+		B75C097E1ED9914B00FEA262 /* Sticker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sticker.swift; sourceTree = "<group>"; };
 		B7D093891ED72CC900B1CCD2 /* TileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileView.swift; sourceTree = "<group>"; };
 		EA968547BAFC78D8B8EE8F5E /* Pods-TimelinePlayground-Swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimelinePlayground-Swift.release.xcconfig"; path = "Pods/Target Support Files/Pods-TimelinePlayground-Swift/Pods-TimelinePlayground-Swift.release.xcconfig"; sourceTree = "<group>"; };
 		FA32A835F57EBBEAAF0BE44F /* Pods_TimelinePlayground_Swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TimelinePlayground_Swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -85,10 +93,10 @@
 		B73816131ED715150084DCFB /* TimelinePlayground-Swift */ = {
 			isa = PBXGroup;
 			children = (
+				B75C09771ED990EF00FEA262 /* Models */,
 				B73816201ED715150084DCFB /* Info.plist */,
 				B73816141ED715150084DCFB /* AppDelegate.swift */,
 				B72B56D81ED7D0E600DB600D /* Defines.swift */,
-				B73816261ED725B70084DCFB /* MovieClip.swift */,
 				B75380CD1ED72F5F00C089CB /* MovieClipView.swift */,
 				B72B56D41ED7CF7B00DB600D /* MovieTrackView.swift */,
 				B72B56D61ED7CF9300DB600D /* MovieTrackViewModel.swift */,
@@ -101,6 +109,18 @@
 				B73816181ED715150084DCFB /* Main.storyboard */,
 			);
 			path = "TimelinePlayground-Swift";
+			sourceTree = "<group>";
+		};
+		B75C09771ED990EF00FEA262 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B73816261ED725B70084DCFB /* MovieClip.swift */,
+				B75C09781ED9912300FEA262 /* Transition.swift */,
+				B75C097A1ED9913400FEA262 /* Audio.swift */,
+				B75C097C1ED9914300FEA262 /* Subtitle.swift */,
+				B75C097E1ED9914B00FEA262 /* Sticker.swift */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 		E423BF0DC1D28B74E85C21A3 /* Pods */ = {
@@ -236,11 +256,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B75C097B1ED9913400FEA262 /* Audio.swift in Sources */,
 				B73816171ED715150084DCFB /* ViewController.swift in Sources */,
 				B73816271ED725B70084DCFB /* MovieClip.swift in Sources */,
 				B75380CE1ED72F5F00C089CB /* MovieClipView.swift in Sources */,
 				B74229E81ED84C2900B2735C /* TimelineView.swift in Sources */,
+				B75C097F1ED9914B00FEA262 /* Sticker.swift in Sources */,
 				B7D0938A1ED72CC900B1CCD2 /* TileView.swift in Sources */,
+				B75C097D1ED9914300FEA262 /* Subtitle.swift in Sources */,
+				B75C09791ED9912300FEA262 /* Transition.swift in Sources */,
 				B72B56D51ED7CF7B00DB600D /* MovieTrackView.swift in Sources */,
 				B72B56D91ED7D0E600DB600D /* Defines.swift in Sources */,
 				B72B56D71ED7CF9400DB600D /* MovieTrackViewModel.swift in Sources */,
