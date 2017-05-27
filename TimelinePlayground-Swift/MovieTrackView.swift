@@ -38,6 +38,7 @@ class MovieTrackView: UIView {
     var clipViews = [MovieClipView]()
     var transitionViews = [TransitionView]()
     var referenceClipFrames = [CGRect]()
+    var dragFrame = CGRect.zero
     
     // TODO: frame 应该由哪个模块负责计算
     
@@ -149,5 +150,31 @@ extension MovieTrackView {
     
     var reachedMinScale: Bool {
         return Int(frame.width) <= viewModel.minContentWidth()
+    }
+}
+
+extension MovieTrackView {
+    
+    func draggableView(at point: CGPoint) -> UIView? {
+        let viewsAtPoint = clipViews.filter { $0.frame.contains(point) }
+        
+        if viewsAtPoint.count > 1 {
+            assertionFailure("attempt to get 0 or 1 view at point \(point), but get \(viewsAtPoint.count)")
+            return nil
+        }
+        
+        return viewsAtPoint.first
+    }
+    
+    // TODO: protocol draggable
+    
+    func removeDraggableView(_ view: UIView) {
+        dragFrame = view.frame
+        view.removeFromSuperview()
+    }
+    
+    func addDraggableView(_ view: UIView) {
+        addSubview(view)
+        view.frame = dragFrame
     }
 }
