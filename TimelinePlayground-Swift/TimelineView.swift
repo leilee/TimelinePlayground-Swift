@@ -39,11 +39,16 @@ class TimelineView: UIScrollView {
         let longPress = UILongPressGestureRecognizer(target: self, action: #selector(longPressAction(sender:)))
         addGestureRecognizer(longPress)
         
+        let tap = UITapGestureRecognizer(target: self, action: #selector(tapAction(sender:)))
+        addGestureRecognizer(tap)
+        
 //        let pan = UIPanGestureRecognizer(target: self, action: #selector(panAction(sender:)))
 //        addGestureRecognizer(pan)
     }
 
 }
+
+// MARK: - Gesture Action
 
 extension TimelineView {
     
@@ -81,7 +86,20 @@ extension TimelineView {
     func panAction(sender: UIPanGestureRecognizer) {
         print("\(#function), \(sender)")
     }
+    
+    func tapAction(sender: UITapGestureRecognizer) {
+        print("\(#function), \(sender)")
+        if sender.state == .ended {
+            if let v = trackView.tappableView(at: sender.location(in: trackView)) {
+                trackView.applyTap(v)
+            } else {
+                trackView.clearAllTap()
+            }
+        }
+    }
 }
+
+// MARK: - Drag
 
 extension TimelineView {
     
@@ -124,4 +142,10 @@ extension TimelineView {
             v.center = point
         }
     }
+}
+
+// MARK: - Tap
+
+extension TimelineView {
+    
 }

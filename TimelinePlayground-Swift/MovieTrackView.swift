@@ -77,6 +77,8 @@ class MovieTrackView: UIView {
 
 }
 
+// MARK: - Scale
+
 extension MovieTrackView {
     
     func beginScale() {
@@ -153,7 +155,11 @@ extension MovieTrackView {
     }
 }
 
+// MARK: - Drag
+
 extension MovieTrackView {
+    
+    // TODO: protocol draggable
     
     func draggableView(at point: CGPoint) -> UIView? {
         let viewsAtPoint = clipViews.filter { $0.frame.contains(point) }
@@ -166,8 +172,6 @@ extension MovieTrackView {
         return viewsAtPoint.first
     }
     
-    // TODO: protocol draggable
-    
     func removeDraggableView(_ view: UIView) {
         dragFrame = view.frame
         view.removeFromSuperview()
@@ -177,4 +181,32 @@ extension MovieTrackView {
         addSubview(view)
         view.frame = dragFrame
     }
+}
+
+// MARK: - Tap
+
+extension MovieTrackView {
+    
+    // TODO: protocol tappable
+    
+    func tappableView(at point: CGPoint) -> UIView? {
+        let viewsAtPoint = clipViews.filter { $0.frame.contains(point) }
+        
+        if viewsAtPoint.count > 1 {
+            assertionFailure("attempt to get 0 or 1 view at point \(point), but get \(viewsAtPoint.count)")
+            return nil
+        }
+        
+        return viewsAtPoint.first
+    }
+    
+    func applyTap(_ view: UIView) {
+        clearAllTap()
+        (view as! MovieClipView).selected = true
+    }
+    
+    func clearAllTap() {
+        clipViews.forEach { $0.selected = false }
+    }
+    
 }

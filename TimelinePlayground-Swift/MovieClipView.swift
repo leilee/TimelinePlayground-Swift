@@ -26,7 +26,9 @@ class MovieClipView: UIView {
     
     var selected = false {
         didSet {
-            selected ? applySelectionStyle() : applyUnselectionStyle()
+            if oldValue != selected {
+                selected ? applySelectionStyle() : applyUnselectionStyle()
+            }
         }
     }
     
@@ -42,9 +44,6 @@ class MovieClipView: UIView {
         
         clipsToBounds = true
         
-        let tap = UITapGestureRecognizer(target: self, action: #selector(tapAction(sender:)))
-        addGestureRecognizer(tap)
-        
         reloadTile()
     }
     
@@ -54,11 +53,6 @@ class MovieClipView: UIView {
 }
 
 extension MovieClipView {
-    
-    func tapAction(sender: UITapGestureRecognizer) {
-        print("\(#function), state: \(sender.state.description)")
-        selected = !selected
-    }
     
     func applySelectionStyle() {
         borderImageView.frame = CGRect(origin: .zero, size: frame.size)
